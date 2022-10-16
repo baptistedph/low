@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '8080:80'
+    volumes:
+      - .:/var/www/html
+  db:
+    image: 'mariadb'
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_DATABASE: low
+      MYSQL_USER: bado
+      MYSQL_PASSWORD: badolebado
+    volumes:
+      - ./database/dump.sql:/docker-entrypoint-initdb.d/dump.sql
