@@ -11,6 +11,11 @@ services:
   db:
     image: 'mariadb'
     restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 256M
     environment:
       MYSQL_ROOT_PASSWORD: 'root'
       MYSQL_DATABASE: low
